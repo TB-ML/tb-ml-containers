@@ -20,7 +20,6 @@ This is our training code.
 
 ``` python
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.datasets import make_classification
 import pickle
 import subprocess as sp
 from collections import defaultdict
@@ -67,7 +66,7 @@ python train.py
 
 Importantly you see that we have dumped the model object to a file. We can then use the `.predict()` method from the object when we reload it somewhere else.
 
-## Step 2 - Set up your prediction script
+### Step 2 - Set up your prediction script
 
 Now that we have the model saved, we can create a script to load it along with a vcf from a new sample and make a prediction. Here is the code for that.
 
@@ -124,7 +123,7 @@ rifampicin,1
 
 Now we are ready to package our prediction pipeline into a container.
 
-## Step 3 - Create container
+### Step 3 - Create container
 
 To build a container you first need docker installed. Head over to https://www.docker.com/ to download the latest version. Once you have it installed you can start the build process. First we need to define what software we need.
 It is very important to use the exact same versions of libraries and software in the docker container as you used to train. You can check this with conda
@@ -195,7 +194,7 @@ And finally you can push the container to dockerhub
 $ docker push jodyphelan/simple-rif-rf:latest
 ```
 
-# Step 4 - Add your container to TB-ML-Containers (optional)
+## Adding your container to TB-ML-Containers
 
 If you want to publicise your container you can add it to this website to improve its visibility. To do this you just have to fork [this repo](https://github.com/TB-ML/tb-ml-containers). After this, you should add a markdown file to the appropriate location `/docs/containers/prediction` for prediction containers or `/docs/containers/preprocessing` for preprocessing containers. The markdown file should contain a few variables that are defined at the top of the page in yaml format. In particular, for prediction containers they need:
 
