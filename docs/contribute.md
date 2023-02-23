@@ -7,7 +7,10 @@ A container is essentially a mini virtual machine that contains all software nee
 
 ### Step 1 - Training the model
 
-As an example we will train a random forest classifier to predict resistance to rifampicin. The input data is a set of 100 resistant and 100 sensitive isolates randomly taken from the SRA. The input data and scripts are available from [this repository](https://github.com/jodyphelan/simple-rif-rf). This is a very quick and dirty model that takes a lot of shortcuts, it is just meant for demonstration purposes.
+As an example we will train a random forest classifier to predict resistance to rifampicin. The input data is a set of 100 resistant and 100 sensitive isolates randomly taken from the SRA. The input data and scripts are available from [this repository](https://github.com/jodyphelan/simple-rif-rf). 
+
+!!! warning
+    This is a very quick and dirty model that takes a lot of shortcuts, it is just meant for demonstration purposes.
 
 First lets set up a conda environment for our code:
 
@@ -58,13 +61,15 @@ positions = list(list(genos.values())[0])
 pickle.dump({"model":clf,"positions":positions}, open("model.pkl","wb"))
 ```
 
+!!! note
+    We have used pickle to dump the model to a file. Importantly, we also include the genomic positions of all the features so it will allow us to re-create the input data in the exact same format. We can then use the `.predict()` method from the object when we reload it somewhere else.
+
 Execute the code to run the training:
 
 ``` bash
 $ python train.py
 ```
 
-Importantly you see that we have dumped the model object to a file. We can then use the `.predict()` method from the object when we reload it somewhere else.
 
 ### Step 2 - Set up your prediction script
 
@@ -113,6 +118,9 @@ pred = clf.predict(genos)
 sys.stdout.write("drug,prediction\nrifampicin,%s\n" % pred[0])
 ```
 
+!!! note
+    If you are making your container to be complient with `tb-ml` you need to write any results you want in the final output to stdout.
+
 We can then use this script to predict on some new data.
 
 ``` bash
@@ -126,7 +134,7 @@ Now we are ready to package our prediction pipeline into a container.
 ### Step 3 - Create container
 
 To build a container you first need docker installed. Head over to https://www.docker.com/ to download the latest version. Once you have it installed you can start the build process. First we need to define what software we need.
-It is very important to use the exact same versions of libraries and software in the docker container as you used to train. You can check this with conda
+It is very important to use the exact same versions of libraries and software in the docker container as you used to train. You can check this with conda.
 
 ``` bash
 $ conda list | grep bcftools
