@@ -168,15 +168,15 @@ ENTRYPOINT ["/usr/local/bin/_entrypoint.sh", "python", "/internal_data/predict.p
 
 We can then build the container with 
 
-```
-docker build -t simple-rif-rf . 
+``` bash
+$ docker build -t simple-rif-rf . 
 ```
 
 In a nutshell, this installs our required software, copies the data files and scripts to the container and finally defines an "entrypoint" script that will be run when the container is executed.
 
 We can then use this container in a similar way to how we used the script to predict. Since, we already point the `--model` flag to the right file in the ENTRYPOINT variable we only need to give the `--vcf` argument.
 
-```
+``` bash
 $ docker run --rm -it -v $PWD:/data  simple-rif-rf  
 drug,prediction
 rifampicin,1
@@ -184,13 +184,13 @@ rifampicin,1
 
 Now finally you can publish your container to dockerhub. Head over to https://hub.docker.com/ and set yourself up with an account. Once you have done this you can link your account with your local docker installation.
 
-```
+``` bash
 $ docker login
 ```
 
 And finally you can push the container to dockerhub
 
-```
+``` bash
 $ docker push jodyphelan/simple-rif-rf:latest
 ```
 
