@@ -7,7 +7,7 @@ A container is essentially a mini virtual machine that contains all software nee
 
 ### Step 1 - Training the model
 
-As an example we will train a random forest classifier to predict resistance to rifampicin. The input data is a set of 100 resistant and 100 sensitive isolates randomly taken from the SRA. The input data and scripts are available from [this repository]().
+As an example we will train a random forest classifier to predict resistance to rifampicin. The input data is a set of 100 resistant and 100 sensitive isolates randomly taken from the SRA. The input data and scripts are available from [this repository](https://github.com/jodyphelan/simple-rif-rf). This is a very quick and dirty model that takes a lot of shortcuts, it is just meant for demonstration purposes.
 
 First lets set up a conda environment for our code:
 
@@ -195,7 +195,7 @@ And finally you can push the container to dockerhub
 $ docker push jodyphelan/simple-rif-rf:latest
 ```
 
-# Step 4 - Add your container this TB-ML-Containers (optional)
+# Step 4 - Add your container to TB-ML-Containers (optional)
 
 If you want to publicise your container you can add it to this website to improve its visibility. To do this you just have to fork [this repo](https://github.com/TB-ML/tb-ml-containers). After this, you should add a markdown file to the appropriate location `/docs/containers/prediction` for prediction containers or `/docs/containers/preprocessing` for preprocessing containers. The markdown file should contain a few variables that are defined at the top of the page in yaml format. In particular, for prediction containers they need:
 
