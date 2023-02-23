@@ -60,8 +60,8 @@ pickle.dump({"model":clf,"positions":positions}, open("model.pkl","wb"))
 
 Execute the code to run the training:
 
-```
-python train.py
+``` bash
+$ python train.py
 ```
 
 Importantly you see that we have dumped the model object to a file. We can then use the `.predict()` method from the object when we reload it somewhere else.
@@ -115,7 +115,7 @@ sys.stdout.write("drug,prediction\nrifampicin,%s\n" % pred[0])
 
 We can then use this script to predict on some new data.
 
-```
+``` bash
 $ python predict.py --vcf por5A1.vcf.gz --model model.pkl
 drug,prediction
 rifampicin,1
@@ -128,7 +128,7 @@ Now we are ready to package our prediction pipeline into a container.
 To build a container you first need docker installed. Head over to https://www.docker.com/ to download the latest version. Once you have it installed you can start the build process. First we need to define what software we need.
 It is very important to use the exact same versions of libraries and software in the docker container as you used to train. You can check this with conda
 
-```
+``` bash
 $ conda list | grep bcftools
 bcftools                  1.16                 h83fc8ca_1    bioconda
 $ conda list | grep scikit-learn
