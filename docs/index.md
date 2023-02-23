@@ -21,3 +21,5 @@ Name | Input | Features | Docker
 {%- for c in get_preprocessing_containers() %}
 {{ c.url }} | {{ c.input }}  | {{ c.features }} | {{ c.docker }}
 {%- endfor %}
+
+![mrc](img/MRC.png)
