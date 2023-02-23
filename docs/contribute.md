@@ -5,7 +5,7 @@
 A container is essentially a mini virtual machine that contains all software needed to run predictions on new data.
 [Docker](https://www.docker.com/) is used to build the containers and they can then be run on any system which has docker installed. There are a few steps required to build a container. We'll go through these by going through a whole example, from training to prediction. 
 
-### Step 1 - Training
+### Step 1 - Training the model
 
 As an example we will train a random forest classifier to predict resistance to rifampicin. The input data is a set of 100 resistant and 100 sensitive isolates randomly taken from the SRA. The input data and scripts are available from [this repository]().
 
@@ -124,7 +124,7 @@ rifampicin,1
 
 Now we are ready to package our prediction pipeline into a container.
 
-## Step 3 Create container
+## Step 3 - Create container
 
 To build a container you first need docker installed. Head over to https://www.docker.com/ to download the latest version. Once you have it installed you can start the build process. First we need to define what software we need.
 It is very important to use the exact same versions of libraries and software in the docker container as you used to train. You can check this with conda
@@ -195,7 +195,7 @@ And finally you can push the container to dockerhub
 $ docker push jodyphelan/simple-rif-rf:latest
 ```
 
-# Step 4 Add your container this TB-ML-Containers (optional)
+# Step 4 - Add your container this TB-ML-Containers (optional)
 
 If you want to publicise your container you can add it to this website to improve its visibility. To do this you just have to fork [this repo](https://github.com/TB-ML/tb-ml-containers). After this, you should add a markdown file to the appropriate location `/docs/containers/prediction` for prediction containers or `/docs/containers/preprocessing` for preprocessing containers. The markdown file should contain a few variables that are defined at the top of the page in yaml format. In particular, for prediction containers they need:
 
