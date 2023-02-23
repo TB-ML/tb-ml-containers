@@ -16,4 +16,15 @@ Reduced in model size (1/3 original size) but retain equal accuracy (~93%)
 
 Input one-hot-encoded consensus sequence Loci used: acpM-kasA, gid, rpsA, clpC, embCAB, aftB-ubiA, rrs-rrl, ethAR, oxyR-ahpC, tlyA, katG, rpsLrpoBC, fabG1-inhA, eis, gyrBA, panD, pncA.
 
-Output one-hot-encoded vector for drug resistance prediction of 13 drugs: 'AMIKACIN', 'CAPREOMYCIN', 'CIPROFLOXACIN', 'ETHAMBUTOL', 'ETHIONAMIDE', 'ISONIAZID', 'KANAMYCIN', 'LEVOFLOXACIN', 'MOXIFLOXACIN', 'OFLOXACIN', 'PYRAZINAMIDE', 'RIFAMPICIN', 'STREPTOMYCIN'
+Get the onehot encoded sequence from bam file
+
+docker run -v $PWD:/data \
+    linfengwang/tb-ml-one-hot-encoded-seqs-from-raw-reads-with-gap-insertion \
+    -b file.bam \
+    -o nn_target_loci.csv
+    
+Predict resistance against 13 drugs from one-hot-encoded sequences 
+
+docker run -v $PWD:/data \
+    linfengwang/tb-dr-pred-nn \
+    input_seqs.csv
