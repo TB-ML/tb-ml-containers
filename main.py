@@ -24,7 +24,7 @@ def define_env(env):
             if f.endswith(".md"):
                 y = get_front_matter(f"{d}/{f}")
                 page_name = f.split("/")[-1].replace(".md","")
-                y['url'] = f"[{y['title']}](/containers/prediction/{page_name})"
+                y['url'] = f"[{y['title']}](containers/prediction/{page_name}.md)"
                 y['drugs'] = ", ".join(y['drugs'])
                 data.append(y)
         return data
