@@ -37,7 +37,7 @@ def define_env(env):
             if f.endswith(".md"):
                 y = get_front_matter(f"{d}/{f}")
                 page_name = f.split("/")[-1].replace(".md","")
-                y['url'] = f"[{y['title']}](/containers/preprocessing/{page_name})"
+                y['url'] = f"[{y['title']}](containers/preprocessing/{page_name}.md)"
                 data.append(y)
         return data
 

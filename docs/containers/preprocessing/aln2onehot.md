@@ -2,7 +2,7 @@
 title: aln2one-hot
 type: preprocessing
 input: sam/bam/cram
-features: 'one hot encoded sequence'
+features: One-hot-encoded-sequence/CSV
 docker: julibeg/tb-ml-one-hot-encoded-seqs-from-aligned-reads
 ---
 # {{title}}
