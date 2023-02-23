@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # TB-ML-Containers
 
 Welcome to the tb-ml-community page which serves as a centralised repository list of containers that can be used with [tb-ml](https://github.com/jodyphelan/tb-ml). Click on an individual container to find out more. For information on how to build containers and how to add them to this page, click on the [contribute](contribute.md) section.

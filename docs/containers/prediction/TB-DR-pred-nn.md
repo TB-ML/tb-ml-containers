@@ -1,9 +1,9 @@
 ---
 title: tb-dr-pred-nn
-drugs: ['AMIKACIN', 'CAPREOMYCIN', 'CIPROFLOXACIN', 'ETHAMBUTOL', 'ETHIONAMIDE', 'ISONIAZID', 'KANAMYCIN', 'LEVOFLOXACIN', 'MOXIFLOXACIN', 'OFLOXACIN', 'PYRAZINAMIDE', 'RIFAMPICIN', 'STREPTOMYCIN']
+drugs: ['amikacin', 'capreomycin', 'ciprofloxacin', 'ethambutol', 'ethionamide', 'isoniazid', 'kanamycin', 'levofloxacin', 'moxifloxacin', 'ofloxacin', 'pyrazinamide', 'rifampicin', 'streptomycin']
 architecture: CNN
 docker: linfengwang/tb-dr-pred-nn
-input:  onehot encoded loci sequences in the form of csv
+input:  One-hot-encoded-sequence/CSV
 ---
 
 
@@ -18,13 +18,17 @@ Input one-hot-encoded consensus sequence Loci used: acpM-kasA, gid, rpsA, clpC, 
 
 Get the onehot encoded sequence from bam file
 
+```
 docker run -v $PWD:/data \
     linfengwang/tb-ml-one-hot-encoded-seqs-from-raw-reads-with-gap-insertion \
     -b file.bam \
     -o nn_target_loci.csv
-    
+```
+
 Predict resistance against 13 drugs from one-hot-encoded sequences 
 
+```
 docker run -v $PWD:/data \
     linfengwang/tb-dr-pred-nn \
     input_seqs.csv
+```
