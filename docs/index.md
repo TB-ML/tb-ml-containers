@@ -21,3 +21,9 @@ Name | Input | Features | Docker
 {%- for c in get_preprocessing_containers() %}
 {{ c.url }} | {{ c.input }}  | {{ c.features }} | {{ c.docker }}
 {%- endfor %}
+
+
+<!-- 100% privacy friendly analytics to report back to funding agency -->
+<!-- Learn more at https://docs.simpleanalytics.com/what-we-collect -->
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
