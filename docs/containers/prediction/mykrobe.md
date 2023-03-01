@@ -1,7 +1,7 @@
 ---
 title: mykrobe
 drugs: ['amikacin',  'capreomycin',  'ciprofloxacin',  'delamanid',  'ethambutol',  'ethionamide',  'isoniazid',  'kanamycin',  'levofloxacin',  'linezolid',  'moxifloxacin',  'ofloxacin',  'pyrazinamide',  'rifampicin',  'streptomycin']
-architecture: DirectAssociation
+architecture: 'Direct Association'
 input: fastq
 docker: jodyphelan/mykrobe
 ---

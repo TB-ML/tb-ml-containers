@@ -1,7 +1,7 @@
 ---
 title: RF-Streptomycin
 drugs: ['streptomycin']
-architecture: RandomForest
+architecture: 'Random Forest'
 input: variants/CSV
 docker: julibeg/tb-ml-random-forest-from-variants-streptomycin
 ---
