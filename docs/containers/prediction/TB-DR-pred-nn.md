@@ -7,16 +7,19 @@ input:  One-hot-encoded-sequence/CSV
 ---
 
 
-# Small CNN model for prediction TB drug resistance from onehot encoded loci sequences
+# Small CNN model for prediction TB drug resistance from one-hot-encoded sequences of target loci
 
 
-Model adapted from the below paper: Green, A.G. et al. (2021) “A convolutional neural network highlights mutations relevant to antimicrobial resistance in mycobacterium tuberculosis.” Available at: https://doi.org/10.1101/2021.12.06.471431.
+Model adapted from: Green, A.G. et al. (2021) “A convolutional neural network highlights mutations relevant to antimicrobial resistance in Mycobacterium tuberculosis.”;
+Available at: https://doi.org/10.1101/2021.12.06.471431.
 
-Reduced in model size (1/3 original size) but retain equal accuracy (~93%)
+Compared to the original, this model is reduced in size (1/3 original size), but retains comparable accuracy (~93%).
 
-Input one-hot-encoded consensus sequence Loci used: acpM-kasA, gid, rpsA, clpC, embCAB, aftB-ubiA, rrs-rrl, ethAR, oxyR-ahpC, tlyA, katG, rpsLrpoBC, fabG1-inhA, eis, gyrBA, panD, pncA.
+Input one-hot-encoded consensus sequences of the following loci: acpM-kasA, gid, rpsA, clpC, embCAB, aftB-ubiA, rrs-rrl, ethAR, oxyR-ahpC, tlyA, katG, rpsLrpoBC, fabG1-inhA, eis, gyrBA, panD, pncA.
 
-Get the onehot encoded sequence from bam file
+## Example usage
+
+Get the one-hot-encoded sequences from a BAM file
 
 ```
 docker run -v $PWD:/data \
@@ -25,7 +28,7 @@ docker run -v $PWD:/data \
     -o nn_target_loci.csv
 ```
 
-Predict resistance against 13 drugs from one-hot-encoded sequences 
+Predict resistance against 13 drugs from the one-hot-encoded sequences
 
 ```
 docker run -v $PWD:/data \
